@@ -5,13 +5,20 @@ const server = createServer((request, response) => {
 
   response.statusCode = 200;
 
-  response.setHeader("Content-Type", "text/html");
+  response.setHeader("Content-Type", "application/json");
 
-  response.end(
-    "<html><body><h1>This page was served with Node.js!</h1></body></html>"
-  );
+  const responseBody = {
+    location: "Mars"
+  };
+
+  const jsonResponseBody = JSON.stringify(responseBody);
+
+  response.end(jsonResponseBody);
 });
 
 server.listen(3000, () => {
   console.log(`Server running at http://localhost:3000`);
 });
+
+
+/* Content-Length: 19 */
